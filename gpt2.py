@@ -14,32 +14,34 @@ if __name__ == "__main__":
 	model = GPT2LMHeadModel.from_pretrained("gpt2", pad_token_id=tokenizer.eos_token_id)
 	
 	print("Type 'quit' to exit. \nType 'reset' to restart the conversation.\n")
-	user_name = input("Enter your name: ")
+	user_name = input("Enter your name: ").capitalize()
 	print("\n")
 	
 	accumulated_text = ""
 	
 	while True:
-		input_text = input(user_name + ": ")
+		input_text = input(user_name + ": ").capitalize()
 		
-		if input_text == "quit":
+		if input_text == "Quit":
 			break
-		elif input_text == "reset":
+		elif input_text == "Reset":
 			accumulated_text = ""
 			print("Conversation restarted!\n")
-			input_text = input(user_name + ": ")
+			input_text = input(user_name + ": ").capitalize()
 		
 		if input_text[-1] != ".":
 			input_text += "."
 			
-		input_text = user_name + ": " + input_text + "\nBuda Gautama:"
+		input_text = user_name + ": " + input_text + "\nBot:"
 		accumulated_text += input_text
 		start_index = len(accumulated_text)
 
+		print("INPUT: " + accumulated_text)
+		
 		output_text = generate_text(accumulated_text, input_length=start_index)[start_index:]
 		first_sentence_index = output_text.find(".")
 		second_sentence_index = output_text[first_sentence_index + 1:].find(".")
 		output_text = output_text[:first_sentence_index + second_sentence_index + 2]
-		print("Buda Gautama:" + output_text)
+		print("Bot:" + output_text)
 		
 		accumulated_text += output_text + "\n"
