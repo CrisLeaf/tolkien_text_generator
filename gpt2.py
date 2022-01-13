@@ -3,8 +3,8 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 def generate_text(input_text, input_length=0):
 	inputs = tokenizer.encode(input_text, return_tensors="pt")
-	outputs = model.generate(inputs, max_length=input_length + 50, do_sample=True, top_p=0.9,
-							 top_k=0, temperature=0.7)
+	outputs = model.generate(inputs, max_length=input_length + 50, do_sample=True, top_k=0,
+							 temperature=0.7, no_repeat_ngram_size=2)
 	
 	return tokenizer.decode(outputs[0], skip_special_tokens=True)
 	
