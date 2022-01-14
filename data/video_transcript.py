@@ -1,25 +1,16 @@
-import subprocess
-
-
-command = "ffmpeg -i youtube_video.webm -ab 160k -ar 44100 -vn audio.wav"
-subprocess.call(command, shell=True)
-
-#%%
 import speech_recognition as sr
 import os
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 
 
-r = sr.Recognizer()
-
-def get_large_audio_transcription(path):
+def get_large_audio_transcription(file):
 	"""
 	Splitting the large audio file into chunks and apply speech recognition
 	on each of these chunks.
 	"""
 	# Open the audio file using pydub
-	sound = AudioSegment.from_wav(path)
+	sound = AudioSegment.from_wav(file)
 	
 	# Split audio sound where silence is 700 miliseconds or more and get chunks
 	chunks = split_on_silence(
@@ -30,7 +21,7 @@ def get_large_audio_transcription(path):
 	)
 	
 	# Create a directory to store the audio chunks
-	folder_name = "audio-chunks"
+	folder_name = file[0:-4] + "_audio-chunks"
 	if not os.path.isdir(folder_name):
 		os.mkdir(folder_name)
 	whole_text = ""
@@ -60,5 +51,18 @@ def get_large_audio_transcription(path):
 	return whole_text
 
 #%%
-path = "audio.wav"
-print("\nFull text:", get_large_audio_transcription(path))
+r = sr.Recognizer()
+
+filename = "wav_data/audio1.wav"
+
+print("Converting...")
+whole_text = get_large_audio_transcription(filename)
+print("Done")
+
+
+# %%
+# if __name__ == "__main__":
+# 	r = sr.Recognizer()
+#
+# 	file = "file.wav"
+# 	print("\nFull text:", get_large_audio_transcription(file))
