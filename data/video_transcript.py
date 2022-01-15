@@ -21,7 +21,7 @@ def get_large_audio_transcription(file):
 	)
 	
 	# Create a directory to store the audio chunks
-	folder_name = file[0:-4] + "_audio-chunks"
+	folder_name = file[0:-4] + "_chunks"
 	if not os.path.isdir(folder_name):
 		os.mkdir(folder_name)
 	whole_text = ""
@@ -41,28 +41,28 @@ def get_large_audio_transcription(file):
 			try:
 				text = r.recognize_google(audio_listened, language="es-ES")
 			except sr.UnknownValueError as e:
-				print("Error:", str(e))
+				print("Error", str(e))
 			else:
 				text = f"{text.capitalize()}."
-				print(chunk_filename, ":", text)
+				print(chunk_filename, " Done.")
 				whole_text += text
 				
 	# return the text for all chunks detected
 	return whole_text
 
-#%%
-r = sr.Recognizer()
 
-filename = "wav_data/audio1.wav"
-
-print("Converting...")
-whole_text = get_large_audio_transcription(filename)
-print("Done")
-
-
-# %%
-# if __name__ == "__main__":
-# 	r = sr.Recognizer()
-#
-# 	file = "file.wav"
-# 	print("\nFull text:", get_large_audio_transcription(file))
+if __name__ == "__main__":
+	r = sr.Recognizer()
+	
+	files = os.listdir("wav_data")
+	files = [file for file in files if file[-6:] != "chunks"]
+	
+	for filename in files:
+		print("Converting " + filename + "...")
+		whole_text = get_large_audio_transcription("wav_data/" + filename)
+		
+		with open("text_data/text_data.txt", "a") as f:
+			f.write(whole_text)
+			f.write("\n")
+	
+	print("Done!")
