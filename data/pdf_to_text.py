@@ -50,3 +50,10 @@ if __name__ == "__main__":
 	
 	with open("text_data/books_text.txt", "w") as f:
 		f.write(data)
+
+#%%
+whole_text = convert_pdf_to_string("books_data/el-retorno-del-rey.pdf")
+#%%
+whole_text
+
+#%%
