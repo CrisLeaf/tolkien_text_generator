@@ -13,11 +13,28 @@ def convert_pdf_to_string(filename):
 			data += page_object.extractText()
 	
 	return data
+
+def clean_text(text):
+	text = text.replace("˜", "fi")
+	text = text.replace("- ", "")
+	text = text.replace("-", "")
 	
-def clean_text(string):
-	string = string.replace("˜", "fi")
+	data_splited = text.split(".")
+	sentences = [sentence.lower() for sentence in data_splited if len(sentence) >= 50]
 	
-	return " ".join(string.split())
+	def clean_special(string):
+		output_string = ""
+		
+		for letter in string:
+			if letter in "abcdefghijklmnñopqrstuvwxyz0123456789+*-/%$¿¡?!, áéíóú":
+				output_string += letter
+		
+		return output_string
+	
+	sentences = [clean_special(sentence).strip().capitalize() for sentence in sentences]
+	text = ". ".join(sentences)
+	
+	return " ".join(text.split())
 
 
 if __name__ == "__main__":
