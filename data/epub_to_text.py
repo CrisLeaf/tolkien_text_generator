@@ -7,7 +7,6 @@ import re
 filename = "example.epub"
 
 book = open_book(filename)
-
 lines = convert_epub_to_lines(book)
 
 cleaner = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
@@ -18,6 +17,6 @@ def cleanhtml(raw_html):
 
 lines = [cleanhtml(line) for line in lines]
 
-with open("text_data/books_text.txt", "a") as f:
+with open("text_data/books_data.txt", "a") as f:
 	for line in lines:
 		f.write(line)

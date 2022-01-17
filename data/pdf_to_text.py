@@ -1,6 +1,7 @@
 import PyPDF2
 from tqdm import tqdm
 import os
+from clean_text import clean_text
 
 
 def convert_pdf_to_string(filename):
@@ -14,28 +15,6 @@ def convert_pdf_to_string(filename):
 	
 	return data
 
-def clean_text(text):
-	text = text.replace("˜", "fi")
-	text = text.replace("- ", "")
-	text = text.replace("-", "")
-	
-	data_splited = text.split(".")
-	sentences = [sentence.lower() for sentence in data_splited if len(sentence) >= 50]
-	
-	def clean_special(string):
-		output_string = ""
-		
-		for letter in string:
-			if letter in "abcdefghijklmnñopqrstuvwxyz0123456789+*-/%$¿¡?!, áéíóú":
-				output_string += letter
-		
-		return output_string
-	
-	sentences = [clean_special(sentence).strip().capitalize() for sentence in sentences]
-	text = ". ".join(sentences)
-	
-	return " ".join(text.split())
-
 
 if __name__ == "__main__":
 	files = os.listdir("books_data/")
@@ -48,12 +27,5 @@ if __name__ == "__main__":
 		data += whole_text
 		
 	
-	with open("text_data/books_text.txt", "w") as f:
+	with open("text_data/books_data.txt", "w") as f:
 		f.write(data)
-
-#%%
-whole_text = convert_pdf_to_string("books_data/el-retorno-del-rey.pdf")
-#%%
-whole_text
-
-#%%
