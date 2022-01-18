@@ -57,9 +57,10 @@ def main():
 	input_text = ""
 	
 	input_text = st.text_area("Ingrese texto:", input_text, placeholder="Ingrese su texto aquí...")
-
+	input_length = len(input_text.split())
+	
 	if input_text != "":
-		st.write(generate_text(input_text, model, tokenizer, len(input_text),
+		st.write(generate_text(input_text, model, tokenizer, input_length,
 							   output_length, temperature, top_p))
 		
 	html_source_code = """
