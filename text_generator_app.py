@@ -45,8 +45,8 @@ def main():
 	st.sidebar.subheader("Selecciona los Parámetros de la Red Neuronal")
 	
 	output_length = st.sidebar.slider("Cantidad Máxima de palabras generadas:", 10, 200, 50)
-	temperature = st.sidebar.slider("Temperatura:", 0.1, 1.0, 0.6)
-	top_p = st.sidebar.slider("Top P:", 0.1, 0.9, 0.8)
+	temperature = st.sidebar.slider("Temperatura:", 0.01, 1.0, 0.6)
+	top_p = st.sidebar.slider("Top P:", 0.01, 0.99, 0.8)
 	
 	html_source_code = """
 		<p class="source-code-info">
