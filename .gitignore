@@ -15,12 +15,15 @@
 *.tax2010
 *.vcf
 *.xml
-*.txt
 *.pdf
 *.epub
 *.mp3
 *.mp4
 *.wav
+books_data/
+mp3_data/
+text_data/
+wav_data/
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
