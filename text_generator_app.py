@@ -12,7 +12,7 @@ def transformer_init():
 
 def generate_text(input_text, model, tokenizer, input_length, output_length, temperature, top_p):
 	inputs = tokenizer.encode(input_text, return_tensors="pt")
-	outputs = model.generate(inputs, max_length=output_length, do_sample=True,
+	outputs = model.generate(inputs, max_length=input_length + output_length, do_sample=True,
 							 temperature=temperature, top_k=0, no_repeat_ngram_size=2,
 							 top_p=top_p)
 	
