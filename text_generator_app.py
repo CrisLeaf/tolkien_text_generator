@@ -4,8 +4,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def transformer_init():
-	tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish")
-	model = AutoModelForCausalLM.from_pretrained("trained_transformer",
+	tokenizer = AutoTokenizer.from_pretrained("CrisLeaf/generador-de-historias-de-tolkien")
+	model = AutoModelForCausalLM.from_pretrained("CrisLeaf/generador-de-historias-de-tolkien",
 												 pad_token_id=tokenizer.eos_token_id)
 	
 	return tokenizer, model
