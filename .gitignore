@@ -298,4 +298,4 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,python,jupyternotebooks,data
 
-.idea/chatbot.iml
+.idea/tolkien_text_generator.iml
