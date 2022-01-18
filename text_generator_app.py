@@ -56,7 +56,10 @@ def main():
 	
 	input_text = ""
 	
-	input_text = st.text_area("Ingrese texto:", input_text, placeholder="Ingrese su texto aquí...")
+	input_text = st.text_area("Ingrese las primeras palabras y la Red Neuronal completará la "
+							  "historia:",
+							  input_text,
+							  placeholder="Ingrese sus primeras palabras aquí...")
 	input_length = len(input_text.split())
 	
 	if input_text != "":
