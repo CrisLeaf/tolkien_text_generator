@@ -55,19 +55,18 @@ def main():
 	st.sidebar.markdown(html_source_code, unsafe_allow_html=True)
 	
 	input_text = ""
-	
 	input_text = st.text_area("Ingrese las primeras palabras y la Red Neuronal completará la "
 							  "historia:",
 							  input_text,
 							  placeholder="Ingrese sus primeras palabras aquí...")
 	input_length = len(input_text.split())
 	
+	st.button("Generar") # useless button for phones
+
 	if input_text != "":
 		st.write(generate_text(input_text, model, tokenizer, input_length,
 							   output_length, temperature, top_p))
-		
-	st.button("Generar") # useless button for phones
-		
+
 	html_source_code = """
 		<p class="source-code">Código Fuente:
 		<a href="https://github.com/CrisLeaf/tolkien_text_generator">
