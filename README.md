@@ -13,9 +13,11 @@ The project was developed in a Python 3.9 environment using the following librar
     4. [SpeechRecognition](https://pypi.org/project/SpeechRecognition/)
     5. [tqdm](https://tqdm.github.io/)
 * For the core program:
+
     6. [transformers](https://pypi.org/project/transformers/)
     7. [PyTorch](https://pytorch.org/)
 * For deployment:
+
     8. [streamlit](https://streamlit.io/)
 
 Run `pip install -r requirements.txt` on terminal to install all the dependencies. Inside the 
