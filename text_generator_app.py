@@ -66,6 +66,8 @@ def main():
 		st.write(generate_text(input_text, model, tokenizer, input_length,
 							   output_length, temperature, top_p))
 		
+	st.button("Generar") # useless button for phones
+		
 	html_source_code = """
 		<p class="source-code">Código Fuente:
 		<a href="https://github.com/CrisLeaf/tolkien_text_generator">
