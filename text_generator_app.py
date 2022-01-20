@@ -74,6 +74,10 @@ def main():
 		<style>
 			.source-code {
 				text-align: right;
+				color: #666;
+			}
+			.fa-github {
+				color: #666;
 			}
 		</style>
 	"""
