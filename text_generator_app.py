@@ -2,7 +2,7 @@ import streamlit as st
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 
-@st.cache(allow_output_mutation=True, suppress_st_warning=True)
+@st.cache(allow_output_mutation=True, suppress_st_warning=True, max_entries=10, ttl=3600)
 def transformer_init():
 	tokenizer = AutoTokenizer.from_pretrained("CrisLeaf/generador-de-historias-de-tolkien")
 	model = AutoModelForCausalLM.from_pretrained("CrisLeaf/generador-de-historias-de-tolkien",
