@@ -44,10 +44,17 @@ def main():
 	
 	st.sidebar.subheader("Selecciona los Parámetros de la Red Neuronal")
 	
-	output_length = st.sidebar.slider("Cantidad Máxima de palabras generadas:", 10, 200, 50)
-	temperature = st.sidebar.slider("Temperatura:", 0.01, 1.0, 0.6)
-	top_p = st.sidebar.slider("Top P:", 0.01, 1.0, 0.8)
-	
+	st.sidebar.write("Max Length:")
+	output_length = st.sidebar.slider("Cantidad Máxima de palabras generadas", 10, 200, 50)
+	st.sidebar.write("\n")
+	st.sidebar.write("\nTemperature:")
+	temperature = st.sidebar.slider("Mide la impresión del resultado (0: máxima impresión - "
+									"1: mínima impresión)", 0.01, 1.0, 0.6)
+	st.sidebar.write("\n")
+	st.sidebar.write("Top P:")
+	top_p = st.sidebar.slider("Cantidad de palabras a considerar (en masa probabilística)",
+							  0.01, 1.0, 0.8)
+
 	html_source_code = """
 		<p class="source-code-info">
 		<a href="https://huggingface.co/blog/how-to-generate">Más información.</a></p>
@@ -58,7 +65,7 @@ def main():
 	input_text = st.text_area("Ingrese las primeras palabras y la Red Neuronal completará la "
 							  "historia:",
 							  input_text,
-							  placeholder="Ingrese sus primeras palabras aquí...")
+							  placeholder='(Ej: "El mago tomó la espada y")')
 	input_length = len(input_text.split())
 	
 	st.button("Generar") # useless button for phones
@@ -86,3 +93,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
+#%%
