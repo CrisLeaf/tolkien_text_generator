@@ -23,7 +23,7 @@ def main():
 		<head>
 		<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		</head>
-		<a href="https://crisleaf.github.io/apps.html">
+		<a href="https://protected-fjord-89393.herokuapp.com/">
 			<i class="fas fa-arrow-left"></i>
 		</a>
 		<h2 style="text-align:center;">Generador de Historias de Tolkien</h2>
@@ -54,7 +54,7 @@ def main():
 	st.sidebar.write("Top P:")
 	top_p = st.sidebar.slider("Cantidad de palabras a considerar (en masa probabilística)",
 							  0.01, 1.0, 0.8)
-
+	
 	html_source_code = """
 		<p class="source-code-info">
 		<a href="https://huggingface.co/blog/how-to-generate">Más información.</a></p>
@@ -68,12 +68,12 @@ def main():
 							  placeholder='(Ej: "El mago tomó la espada y")')
 	input_length = len(input_text.split())
 	
-	st.button("Generar") # useless button for phones
-
+	st.button("Generar")  # useless button for phones
+	
 	if input_text != "":
 		st.write(generate_text(input_text, model, tokenizer, input_length,
 							   output_length, temperature, top_p))
-
+	
 	html_source_code = """
 		<p class="source-code">Código Fuente:
 		<a href="https://github.com/CrisLeaf/tolkien_text_generator">
@@ -90,7 +90,5 @@ def main():
 	"""
 	st.markdown(html_source_code, unsafe_allow_html=True)
 
-
 if __name__ == "__main__":
 	main()
-#%%
