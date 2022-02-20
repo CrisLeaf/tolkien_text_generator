@@ -76,7 +76,7 @@ def main():
 	
 	html_source_code = """
 		<p class="source-code">Código Fuente:
-		<a href="https://github.com/CrisLeaf/tolkien_text_generator">
+		<a href="https://github.com/CrisLeaf/tolkien_text_generator" target="_blank">
 		<i class="fab fa-github"></i></a></p>
 		<style>
 			.source-code {
